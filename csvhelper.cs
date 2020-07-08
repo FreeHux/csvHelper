@@ -52,7 +52,7 @@ namespace csvklasse
                 foreach (var line in lines)
                 {
                     line.Trim();
-                    lstLines.Add(line);
+                    lstLines.Add(line.ToLower());
                 }
             }
             lstLines.RemoveAll(string.IsNullOrWhiteSpace);
@@ -68,7 +68,7 @@ namespace csvklasse
                     if (word != " ")
                     {
                         word.Trim();
-                        lstWords.Add(word);
+                        lstWords.Add(word.ToLower());
                     }
                 }
             }
