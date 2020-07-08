@@ -34,22 +34,29 @@ namespace csvklasse
             progressBar.Value = 1;
             progressBar.Step = 1;
 
-
             int value;
-            foreach (var word in helper.getLstWords())
-            {
-                dict[word] = dict.TryGetValue(word, out value) ? ++value : 1;
-                progressBar.PerformStep();
-            }
-            foreach (KeyValuePair<string, int> word in dict.OrderByDescending(key => key.Value))
-            {
-                top.Add(word.Key + " " + word.Value);
-            }
+
+            List<string> linesWithThe = helper.findWord(helper.getLstLines(), "the");
 
             for (int i = 0; i < 20; i++)
             {
-                lstTop.Items.Add(top[i]);
+                lstTop.Items.Add(linesWithThe[i]);
             }
+
+            //foreach (var word in helper.getLstWords())
+            //{
+            //    dict[word] = dict.TryGetValue(word, out value) ? ++value : 1;
+            //    progressBar.PerformStep();
+            //}
+            //foreach (KeyValuePair<string, int> word in dict.OrderByDescending(key => key.Value))
+            //{
+            //    top.Add(word.Key + " " + word.Value);
+            //}
+
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    lstTop.Items.Add(top[i]);
+            //}
         }
     }
 }

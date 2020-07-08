@@ -47,7 +47,7 @@ namespace csvklasse
                 MessageBox.Show("kein content geladen");
             }
             else
-            { 
+            {
                 lines = content.Split('\n');
                 foreach (var line in lines)
                 {
@@ -60,10 +60,10 @@ namespace csvklasse
 
         public void splitToWords()
         {
-            foreach(var line in lstLines)
+            foreach (var line in lstLines)
             {
                 string[] words = line.Split(' ');
-                foreach(var word in words)
+                foreach (var word in words)
                 {
                     if (word != " ")
                     {
@@ -95,5 +95,18 @@ namespace csvklasse
             return this.lstWords;
         }
 
+        public List<string> findWord(List<string> input, string search)
+        {
+            List<string> foundWords = new List<string>();
+            
+            foreach(var line in input)
+            {
+                if (line.Contains(search))
+                {
+                    foundWords.Add(line);
+                }
+            }
+            return foundWords;
+        }
     }
 }
