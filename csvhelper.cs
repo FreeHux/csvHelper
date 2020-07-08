@@ -19,6 +19,11 @@ namespace csvklasse
 
         public csvhelper()
         {
+
+        }
+
+        public void openCsv()
+        {
             string filePath;
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
@@ -51,8 +56,10 @@ namespace csvklasse
                 lines = content.Split('\n');
                 foreach (var line in lines)
                 {
-                    line.Trim();
-                    lstLines.Add(line.ToLower());
+                    if (line != string.Empty)
+                    { 
+                        lstLines.Add(line.ToLower());
+                    }
                 }
             }
             lstLines.RemoveAll(string.IsNullOrWhiteSpace);
@@ -60,22 +67,22 @@ namespace csvklasse
 
         public void splitToWords()
         {
+            char[] trimChars = { ',', '.', '!', '?', '"', '“' , '”' , ';', ':' ,'_' };
             foreach (var line in lstLines)
             {
                 string[] words = line.Split(' ');
                 foreach (var word in words)
                 {
-                    if (word != " ")
+                    if (word != " " && word != "")
                     {
-                        word.Trim();
-                        lstWords.Add(word.ToLower());
+                        lstWords.Add(word.Trim(trimChars).ToLower());
                     }
                 }
             }
         }
 
         public void cleanUp()
-        {
+        { 
             content.Replace("  ", " ");
             content.Replace("\n\r", "\n");
         }
@@ -107,6 +114,18 @@ namespace csvklasse
                 }
             }
             return foundWords;
+        }
+
+        public void saveCSV(List<string> source, string path)
+        {
+            StringBuilder csv = new StringBuilder();
+
+            foreach(var line in source)
+            {
+                csv.Append(line+"\n");
+            }
+
+            File.AppendAllText(path, csv.ToString());
         }
     }
 }
