@@ -1,0 +1,10 @@
+F:\csv-klasse\csvklasse\obj\Debug\csvklasse.csprojAssemblyReference.cache
+F:\csv-klasse\csvklasse\obj\Debug\csvklasse.Form1.resources
+F:\csv-klasse\csvklasse\obj\Debug\csvklasse.Properties.Resources.resources
+F:\csv-klasse\csvklasse\obj\Debug\csvklasse.csproj.GenerateResource.cache
+F:\csv-klasse\csvklasse\obj\Debug\csvklasse.csproj.CoreCompileInputs.cache
+F:\csv-klasse\csvklasse\bin\Debug\csvklasse.exe.config
+F:\csv-klasse\csvklasse\bin\Debug\csvklasse.exe
+F:\csv-klasse\csvklasse\bin\Debug\csvklasse.pdb
+F:\csv-klasse\csvklasse\obj\Debug\csvklasse.exe
+F:\csv-klasse\csvklasse\obj\Debug\csvklasse.pdb
