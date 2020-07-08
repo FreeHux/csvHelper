@@ -15,7 +15,7 @@ namespace csvklasse
         private string content;
         private string[] lines;
         private List<string> lstLines = new List<string>();
-
+        private List<string> lstWords = new List<string>();
 
         public csvhelper()
         {
@@ -51,11 +51,34 @@ namespace csvklasse
                 lines = content.Split('\n');
                 foreach (var line in lines)
                 {
+                    line.Trim();
                     lstLines.Add(line);
+                }
+            }
+            lstLines.RemoveAll(string.IsNullOrWhiteSpace);
+        }
+
+        public void splitToWords()
+        {
+            foreach(var line in lstLines)
+            {
+                string[] words = line.Split(' ');
+                foreach(var word in words)
+                {
+                    if (word != " ")
+                    {
+                        word.Trim();
+                        lstWords.Add(word);
+                    }
                 }
             }
         }
 
+        public void cleanUp()
+        {
+            content.Replace("  ", " ");
+            content.Replace("\n\r", "\n");
+        }
 
         public string getContent()
         {
@@ -66,5 +89,11 @@ namespace csvklasse
         {
             return this.lstLines;
         }
+
+        public List<string> getLstWords()
+        {
+            return this.lstWords;
+        }
+
     }
 }
