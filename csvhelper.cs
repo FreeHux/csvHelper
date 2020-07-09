@@ -17,7 +17,7 @@ namespace csvklasse
 
         }
 
-        public void openCsv()
+        public void openCsv() //opens a file dialog, and reads it to string content
         {
             string filePath;
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -40,7 +40,7 @@ namespace csvklasse
             }
         }
 
-        public void splitToLines()
+        public void splitToLines() //splits the content to lines and stores it into List<string> lstLines
         {
             if (content == string.Empty)
             {
@@ -60,9 +60,9 @@ namespace csvklasse
             lstLines.RemoveAll(string.IsNullOrWhiteSpace);
         }
 
-        public void splitToWords()
+        public void splitToWords() //splits the List<string>lstLines into Words and stores in List<string> lstWords
         {
-            char[] trimChars = { ',', '.', '!', '?', '"', '“', '”', ';', ':', '_' };
+            char[] trimChars = { ',', '.', '!', '?', '"', '“', '”', ';', ':', '_' }; //all punctuation marks are removed
             foreach (var line in lstLines)
             {
                 string[] words = line.Split(' ');
@@ -82,22 +82,22 @@ namespace csvklasse
             content.Replace("\n\r", "\n");
         }
 
-        public string getContent()
+        public string getContent() //getter for Content
         {
             return this.content;
         }
 
-        public List<string> getLstLines()
+        public List<string> getLstLines() //getter for lstLines
         {
             return this.lstLines;
         }
 
-        public List<string> getLstWords()
+        public List<string> getLstWords() //getter for words
         {
             return this.lstWords;
         }
 
-        public List<string> findWord(List<string> input, string search)
+        public List<string> findWord(List<string> input, string search) //function to find words in any List of strings
         {
             List<string> foundWords = new List<string>();
 
@@ -111,7 +111,7 @@ namespace csvklasse
             return foundWords;
         }
 
-        public void saveCSV(List<string> source, string path)
+        public void saveCSV(List<string> source, string path) //saves List of Strings in a File
         {
             StringBuilder csv = new StringBuilder();
 
