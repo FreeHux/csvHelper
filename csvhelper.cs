@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace csvklasse
@@ -57,7 +52,7 @@ namespace csvklasse
                 foreach (var line in lines)
                 {
                     if (line != string.Empty)
-                    { 
+                    {
                         lstLines.Add(line.ToLower());
                     }
                 }
@@ -67,7 +62,7 @@ namespace csvklasse
 
         public void splitToWords()
         {
-            char[] trimChars = { ',', '.', '!', '?', '"', '“' , '”' , ';', ':' ,'_' };
+            char[] trimChars = { ',', '.', '!', '?', '"', '“', '”', ';', ':', '_' };
             foreach (var line in lstLines)
             {
                 string[] words = line.Split(' ');
@@ -82,7 +77,7 @@ namespace csvklasse
         }
 
         public void cleanUp()
-        { 
+        {
             content.Replace("  ", " ");
             content.Replace("\n\r", "\n");
         }
@@ -105,8 +100,8 @@ namespace csvklasse
         public List<string> findWord(List<string> input, string search)
         {
             List<string> foundWords = new List<string>();
-            
-            foreach(var line in input)
+
+            foreach (var line in input)
             {
                 if (line.Contains(search))
                 {
@@ -120,9 +115,9 @@ namespace csvklasse
         {
             StringBuilder csv = new StringBuilder();
 
-            foreach(var line in source)
+            foreach (var line in source)
             {
-                csv.Append(line+"\n");
+                csv.Append(line + "\n");
             }
 
             File.AppendAllText(path, csv.ToString());
